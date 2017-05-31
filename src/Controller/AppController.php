@@ -66,4 +66,19 @@ class AppController extends Controller
             $this->set('_serialize', true);
         }
     }
+    /*
+public function initialize() {
+        $this->loadComponent('Auth')
+    }
+    public function beforeFilter(Event $event) {
+       if ($this->request->prefix === null) {
+            $this->Auth->allow();
+       }
+    }
+    public function isAuthorized($user) {
+        if ($this->request->prefix === 'admin') {
+            return (bool)$user['role'] === 'admin';
+        }
+    }
+    */
 }
