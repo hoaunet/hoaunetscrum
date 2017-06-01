@@ -27,6 +27,52 @@ class UserInvitationsMigration extends AbstractMigration
      */
     public function change()
     {
-
+    	$table = $this->table('user_invitations');
+		$table->addColumn('invitor_id', 'integer', [
+            'default' => null,
+            'limit' => 11,
+            'null' => true,
+         ]);
+		 $table->addColumn('company_id', 'integer', [
+            'default' => null,
+            'limit' => 11,
+            'null' => true,
+         ]);
+		  $table->addColumn('user_type', 'integer', [
+            'default' => null,
+            'limit' => 11,
+            'null' => true,
+         ]);
+		 $table->addColumn('project_id', 'text', [
+            'default' => null,
+            'null' => true,
+         ]);
+		 $table->addColumn('user_id', 'integer', [
+            'default' => null,
+            'limit' => 11,
+            'null' => true,
+         ]);
+		  $table->addColumn('is_active', 'integer', [
+            'default' => null,
+            'limit' => 2,
+            'null' => true,
+         ]);
+		  $table->addColumn('qstr', 'string', [
+            'default' => null,
+            'limit' => 100,
+            'null' => true,
+         ]);
+		 $table->addColumn('created', 'datetime', [
+            'default' => 'CURRENT_TIMESTAMP',            
+            'null' => false,
+         ]);
+     	$table->create();
+    }
+	/**
+     * Migrate Down.
+     */
+    public function down()
+    {
+        $this->dropTable('user_invitations');
     }
 }

@@ -27,6 +27,54 @@ class UserNotificationsMigration extends AbstractMigration
      */
     public function change()
     {
-
+    	$table = $this->table('user_notifications');
+		$table->addColumn('user_id', 'integer', [
+            'default' => null,
+            'limit' => 11,
+            'null' => true,
+         ]);
+		 $table->addColumn('type', 'integer', [
+            'default' => null,
+            'limit' => 4,
+            'null' => true,
+         ]);
+		 $table->addColumn('value', 'integer', [
+            'default' => null,
+            'limit' => 4,
+            'null' => true,
+         ]);
+		 $table->addColumn('due_val', 'integer', [
+            'default' => null,
+            'limit' => 4,
+            'null' => true,
+         ]);
+		 $table->addColumn('new_case', 'integer', [
+            'default' => null,
+            'limit' => 2,
+            'null' => true,
+         ]);
+		 $table->addColumn('reply_case', 'integer', [
+            'default' => null,
+            'limit' => 2,
+            'null' => true,
+         ]);
+		 $table->addColumn('case_status', 'integer', [
+            'default' => null,
+            'limit' => 2,
+            'null' => true,
+         ]);
+		 $table->addColumn('weekly_usage_alert', 'integer', [
+            'default' => null,
+            'limit' => 2,
+            'null' => true,
+         ]);
+     	$table->create();
+    }
+	/**
+     * Migrate Down.
+     */
+    public function down()
+    {
+        $this->dropTable('user_notifications');
     }
 }

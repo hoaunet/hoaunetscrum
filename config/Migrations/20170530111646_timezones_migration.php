@@ -28,5 +28,27 @@ class TimezonesMigration extends AbstractMigration
     public function change()
     {
 
+    	$table = $this->table('timezones');
+		$table->addColumn('gmt_offset', 'double', [
+            'default' => null,
+            'null' => true,
+         ]);
+		$table->addColumn('dst_offset', 'double', [
+            'default' => null,
+            'null' => true,
+         ]);
+		$table->addColumn('code', 'string', [
+            'default' => null,
+            'limit' => 4,
+            'null' => true,
+         ]);
+   		$table->create();
+    }
+	/**
+     * Migrate Down.
+     */
+    public function down()
+    {
+        $this->dropTable('timezones');
     }
 }

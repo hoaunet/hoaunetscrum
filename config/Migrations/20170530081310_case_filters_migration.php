@@ -27,7 +27,7 @@ class CaseFiltersMigration extends AbstractMigration
      */
     public function change()
     {
-		$table = $this->table('case_files');
+		$table = $this->table('case_filters');
 		$table->addColumn('user_id', 'integer', [
             'default' => null,
             'limit' => 11,
@@ -44,6 +44,6 @@ class CaseFiltersMigration extends AbstractMigration
      */
     public function down()
     {
-        $this->dropTable('case_files');
+        $this->dropTable('case_filters');
     }
 }

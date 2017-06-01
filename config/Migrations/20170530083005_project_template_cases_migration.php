@@ -52,6 +52,19 @@ class ProjectTemplateCasesMigration extends AbstractMigration
             'default' => null,            
             'null' => true,
          ]);
+		 $table->addColumn('sort', 'integer', [
+            'default' => null,
+            'limit' => 11,
+            'null' => true,
+         ]);
+		 $table->addColumn('created', 'datetime', [
+            'default' => 'CURRENT_TIMESTAMP',            
+            'null' => false,
+         ]);
+		 $table->addColumn('modified', 'datetime', [
+            'default' => null,            
+            'null' => false,
+         ]);
     	$table->create();
     }
 	/**

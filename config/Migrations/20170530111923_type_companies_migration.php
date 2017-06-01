@@ -28,5 +28,24 @@ class TypeCompaniesMigration extends AbstractMigration
     public function change()
     {
 
+    	$table = $this->table('type_companies');
+		$table->addColumn('company_id', 'integer', [
+            'default' => null,
+            'limit' => 11,
+            'null' => true,
+         ]);
+		 $table->addColumn('type_id', 'integer', [
+            'default' => null,
+            'limit' => 11,
+            'null' => true,
+         ]);
+   		$table->create();
+    }
+	/**
+     * Migrate Down.
+     */
+    public function down()
+    {
+        $this->dropTable('type_companies');
     }
 }

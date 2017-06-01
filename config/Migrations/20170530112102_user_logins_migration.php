@@ -27,6 +27,23 @@ class UserLoginsMigration extends AbstractMigration
      */
     public function change()
     {
-
+   		$table = $this->table('user_logins');
+		$table->addColumn('user_id', 'integer', [
+            'default' => null,
+            'limit' => 11,
+            'null' => true,
+         ]);
+   		$table->addColumn('created', 'datetime', [
+            'default' => 'CURRENT_TIMESTAMP',            
+            'null' => false,
+         ]);
+     	$table->create();
+    }
+	/**
+     * Migrate Down.
+     */
+    public function down()
+    {
+        $this->dropTable('user_logins');
     }
 }

@@ -28,5 +28,42 @@ class TemplateModuleCasesMigration extends AbstractMigration
     public function change()
     {
 
+   		$table = $this->table('template_module_cases');
+		$table->addColumn('user_id', 'integer', [
+            'default' => null,
+            'limit' => 11,
+            'null' => true,
+         ]);
+		$table->addColumn('company_id', 'integer', [
+            'default' => null,
+            'limit' => 11,
+            'null' => true,
+        ]);
+		$table->addColumn('template_module_id', 'integer', [
+            'default' => null,
+            'limit' => 11,
+            'null' => true,
+         ]);
+		 $table->addColumn('project_id', 'integer', [
+            'default' => null,
+            'limit' => 11,
+            'null' => true,
+        ]);
+		 $table->addColumn('created', 'datetime', [
+            'default' => 'CURRENT_TIMESTAMP',            
+            'null' => false,
+         ]);
+		 $table->addColumn('modified', 'datetime', [
+            'default' => null,            
+            'null' => false,
+         ]);
+   		$table->create();
+    }
+	/**
+     * Migrate Down.
+     */
+    public function down()
+    {
+        $this->dropTable('template_module_cases');
     }
 }

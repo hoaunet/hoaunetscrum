@@ -27,6 +27,28 @@ class UserInfosMigration extends AbstractMigration
      */
     public function change()
     {
-
+		$table = $this->table('user_infos');
+		$table->addColumn('user_id', 'integer', [
+            'default' => null,
+            'limit' => 11,
+            'null' => true,
+         ]);
+		  $table->addColumn('access_token', 'text', [
+            'default' => null,            
+            'null' => true,
+         ]);
+		 $table->addColumn('is_google_signup', 'integer', [
+            'default' => null,
+            'limit' => 4,
+            'null' => true,
+         ]);
+     	$table->create();
+    }
+	/**
+     * Migrate Down.
+     */
+    public function down()
+    {
+        $this->dropTable('user_infos');
     }
 }

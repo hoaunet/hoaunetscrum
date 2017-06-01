@@ -27,6 +27,24 @@ class TimezoneNamesMigration extends AbstractMigration
      */
     public function change()
     {
-
+    	$table = $this->table('timezone_names');
+		$table->addColumn('gmt', 'string', [
+            'default' => null,
+            'limit' => 15,
+            'null' => true,
+         ]);
+		$table->addColumn('zone', 'string', [
+            'default' => null,
+            'limit' => 15,
+            'null' => true,
+         ]); 
+   		$table->create();
+    }
+	/**
+     * Migrate Down.
+     */
+    public function down()
+    {
+        $this->dropTable('timezone_names');
     }
 }
