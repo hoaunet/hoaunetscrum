@@ -1,4 +1,2 @@
-/vendor/*
-/config/app.php
-/tmp/*
-/logs/*
+/app/tmp/*
+/app/webroot/files/case_files/*
